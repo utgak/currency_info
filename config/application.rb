@@ -24,5 +24,6 @@ module CurrencyInfo
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.autoload_paths += %W(#{root}/app/services #{root}/lib/clients )
+    config.time_zone = 'Moscow'
   end
 end

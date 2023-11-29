@@ -69,3 +69,4 @@ gem "d3-rails"
 gem "c3-rails"
 gem "nokogiri"
 gem 'faraday'
+gem 'whenever', require: false

@@ -6,7 +6,8 @@ class CurrencyParser
   def daily_by_id(currency_id)
     {
       rate: @xml.xpath("/ValCurs/Valute[@ID='#{currency_id}']/VunitRate").first.content,
-      date: Date.current
+      date: Date.current,
+      currency: Currency.where(cbr_id: currency_id).first
     }
   end
 
