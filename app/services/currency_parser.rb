@@ -5,7 +5,7 @@ class CurrencyParser
 
   def daily_by_id(currency_id)
     {
-      rate: @xml.xpath("/ValCurs/Valute[@ID='#{currency_id}']/VunitRate").first.content,
+      rate: @xml.xpath("/ValCurs/Valute[@ID='#{currency_id}']/VunitRate").first.content.gsub(',','.').to_d,
       date: Date.current,
       currency: Currency.where(cbr_id: currency_id).first
     }
@@ -14,7 +14,7 @@ class CurrencyParser
   def dynamic
     @xml.xpath("/ValCurs/Record").map do |element|
       {
-        rate: @xml.xpath("#{element.path}/VunitRate").first.content,
+        rate: @xml.xpath("#{element.path}/VunitRate").first.content.gsub(',','.').to_d,
         date: element.attribute('Date').content.to_date,
         currency: Currency.where(cbr_id: element.attribute('Id').content).first
       }

@@ -15,7 +15,7 @@ Currency.create!([{
 }])
 
 Currency.all.pluck(:cbr_id).each do |cbr_id|
-  raw_data = CbrClient.new.dynamic(1.month.ago, Date.current, cbr_id)
+  raw_data = CbrClient.new.dynamic(2.month.ago.to_date, Date.current, cbr_id)
   prepared_data = CurrencyParser.new(raw_data).dynamic
 
   CurrencyHistory.create!(prepared_data)

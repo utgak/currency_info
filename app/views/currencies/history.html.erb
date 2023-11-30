@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Валюта</th>
+    <th>4 недели назад</th>
+    <th>3 недели назад</th>
+    <th>позапрошлая неделя</th>
+    <th>прошлая неделя</th>
+  </tr>
+
+  <% @currencies.each do |currency| %>
+    <%= render partial: "row", locals: {currency: currency} %>
+  <% end %>
+</table>

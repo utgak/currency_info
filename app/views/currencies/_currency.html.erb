@@ -1,17 +1,16 @@
-<div id="<%= dom_id currency %>">
-  <p>
-    <strong>Name:</strong>
-    <%= currency.name %>
-  </p>
-
-  <p>
-    <strong>Code:</strong>
-    <%= currency.char_code %>
-  </p>
-
-  <p>
-    <strong>Rate:</strong>
-    <%= currency.cbr_id %>
-  </p>
+<% name = currency.keys.first.char_code %>
+<h1><%= currency.keys.first.name %></h1>
+<div id="<%= name %>">
+  <div id="<%= name %>"></div>
+  <script>
+    var chart = c3.generate({
+      bindto: "<%= "##{name}" %>",
+      data: {
+        columns: [
+          <%= currency.values.first.map {|h| h[:rate]}.unshift(currency.keys.first.char_code).to_json.html_safe %>
+        ]
+      }
+    });
+  </script>
 
 </div>

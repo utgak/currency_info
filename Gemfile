@@ -11,8 +11,8 @@ gem "sprockets-rails"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+
+gem "jsbundling-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -65,8 +65,6 @@ group :test do
 end
 
 gem "pg"
-gem "d3-rails"
-gem "c3-rails"
 gem "nokogiri"
 gem 'faraday'
 gem 'whenever', require: false
