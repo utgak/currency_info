@@ -39,11 +39,13 @@ class CurrenciesController < ApplicationController
     @currencies.map do |cur|
       cur.values.map do |weeks|
         weeks.each do |key, value|
-          persent = (((value[1].first.rate - value[0].first.rate) / value[1].first.rate) * 100).round(2)
-          persent_str = persent.positive? ? '+' + persent.to_s : persent.to_s
-          last_value = value[1].first.rate.round(2)
+          if value[1] && value[0]
+            persent = (((value[1].first.rate - value[0].first.rate) / value[1].first&.rate) * 100).round(2)
+            persent_str = persent.positive? ? '+' + persent.to_s : persent.to_s
+            last_value = value[1].first.rate.round(2)
 
-          weeks[key] = [persent_str, last_value]
+            weeks[key] = [persent_str, last_value]
+          end
         end
       end
     end
